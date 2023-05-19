@@ -25,25 +25,19 @@ def solution(survey, choices):
     elif scores['R'] == scores['T']:
         answer += 'R'
     #2번 지표 성격 유형 구하기
-    if scores['C'] > scores['F']:
+    if scores['C'] >= scores['F']:
         answer += 'C'
     elif scores['C'] < scores['F']:
         answer += 'F'
-    elif scores['C'] == scores['F']:
-        answer += 'C'
     #3번 지표 성격 유형 구하기
-    if scores['J'] > scores['M']:
+    if scores['J'] >= scores['M']:
         answer += 'J'
     elif scores['J'] < scores['M']:
         answer += 'M'
-    elif scores['J'] == scores['M']:
-        answer += 'J'
     #4번 지표 성격 유형 구하기
-    if scores['A'] > scores['N']:
+    if scores['A'] >= scores['N']:
         answer += 'A'
     elif scores['A'] < scores['N']:
         answer += 'N'
-    elif scores['A'] == scores['N']:
-        answer += 'A'
     #정답 반환
     return answer
