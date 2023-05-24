@@ -1,6 +1,6 @@
 def solution(wallpaper):
-    lux = 100
-    luy = 100
+    lux = 50
+    luy = 50
     rdx = 0
     rdy = 0
     
