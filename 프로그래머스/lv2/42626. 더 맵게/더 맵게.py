@@ -1,8 +1,10 @@
 import heapq
 
+# 문제의 핵심 포인트! => 정렬 이후에 데이터가 추가되어도 계속 정렬된 상태를 유지해야함 => heapq 사용
+
 def solution(scoville, K):
     count = 0
-    # 정렬에서의 효율성을 향상시키기 위해 heapq를 사용!
+    # 정렬 이후에 데이터가 추가 되어도 계속 정렬된 상태를 유지하기 위해 heapq를 사용!
     heapq.heapify(scoville)
     
     if scoville[0] >= K:
