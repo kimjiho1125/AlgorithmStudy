@@ -1,6 +1,7 @@
 def solution(n, s):
     answer = []
     
+    #원소의 수가 합보다 크면 불가능
     if n > s:
         return [-1]
     
