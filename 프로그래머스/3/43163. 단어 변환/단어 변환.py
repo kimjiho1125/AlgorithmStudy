@@ -12,7 +12,7 @@ def solution(begin, target, words):
         visited[w] = True
         
         while queue:
-            cur_word,cur_depth = queue.pop()
+            cur_word,cur_depth = queue.popleft()
             if cur_word == target:
                 return cur_depth
             
@@ -25,7 +25,7 @@ def solution(begin, target, words):
                         if cur_word[i] != word[i]:
                             cnt += 1
                     if cnt == 1:
-                        queue.append((word,cur_depth+1))
+                        queue.append((word,cur_depth + 1))
                         visited[word] = True
     
     #방문 여부를 표시할 딕셔너리 초기화
