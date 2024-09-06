@@ -14,7 +14,7 @@ for _ in range(m):
 
 def dijkstra(start):
     q = []
-    heapq.heappush(q, (0,start))
+    heapq.heappush(q, (0, start))
     distance[start] = 0
 
     while q:
@@ -28,10 +28,11 @@ def dijkstra(start):
                 heapq.heappush(q, (dist+1, i[0]))
         
 dijkstra(x)
+
 count = 0
 for i in range(1,n+1):
     if distance[i] == k:
         print(i)
         count += 1
-if count == 0:
-    print(-1)
+    if i == n and count == 0:
+        print(-1)
