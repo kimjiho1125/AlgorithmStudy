@@ -1,40 +1,41 @@
-import sys
 from collections import deque
-input = sys.stdin.readline
- 
+
+# 상하좌우
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+n, m = map(int, input().split())
+my_score = 0
+e_score = 0
+# 방문 여부를 저장할 변수
+visited = [[False] * n for _ in range(m)]
+# 전장 상황을 저장할 변수
+board = [list(input()) for _ in range(m)]
+
+
 def bfs(x, y, color):
-    cnt = 0
-    queue = deque()
-    queue.append((x, y))
+    q = deque([(x, y)])
+    cnt = 1
     visited[x][y] = True
- 
-    while queue:
-        x, y = queue.popleft()
- 
+
+    while q:
+        x, y = q.popleft()
+
         for i in range(4):
             nx = x + dx[i]
             ny = y + dy[i]
- 
-            if 0 <= nx < m and 0 <= ny < n:
-                if graph[nx][ny] == color and not visited[nx][ny]:    # each color check
-                    visited[nx][ny] = True
-                    queue.append((nx, ny))
-                    cnt += 1    # each color count
- 
-    return cnt + 1
- 
-dx = [1, 0, -1, 0]
-dy = [0, 1, 0, -1]
-n, m = map(int, input().split())
-graph = [list(input()) for _ in range(m)]
-visited = [[False] * n for i in range(m)]
- 
-white, blue = 0, 0
+
+            if 0 <= nx < m and 0 <= ny < n and not visited[nx][ny] and board[nx][ny] == color:
+                visited[nx][ny] = True
+                q.append((nx, ny))
+                cnt += 1
+
+    return pow(cnt,2)
+
 for i in range(m):
-    for j in range(n):
-        if graph[i][j] == 'W' and not visited[i][j]:
-            white += bfs(i, j, 'W') ** 2    # count accumulate
-        elif graph[i][j] == 'B' and not visited[i][j] :
-            blue += bfs(i, j, 'B') ** 2    # count accumulate
- 
-print(white, blue)
+  for j in range(n):
+    if not visited[i][j] and board[i][j] == "W":
+      my_score += bfs(i, j, "W")
+    if not visited[i][j] and board[i][j] == "B":
+      e_score += bfs(i, j, "B")
+
+print(my_score, e_score, sep=" ")        
